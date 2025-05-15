@@ -1,8 +1,10 @@
 {
-    "name": "RoyTheunissen.UnityPackage-Template",
-    "rootNamespace": "RoyTheunissen.UnityPackage-Template",
+    "name": "RoyTheunissen.GUIDFinder.Editor",
+    "rootNamespace": "RoyTheunissen.GUIDFinder",
     "references": [],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
