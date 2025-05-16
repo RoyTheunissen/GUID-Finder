@@ -9,9 +9,9 @@ using UnityEngine.UIElements;
 using EditorUtility = UnityEditor.EditorUtility;
 using Object = UnityEngine.Object;
 
-namespace RoyTheunissen.GuidFinder
+namespace RoyTheunissen.GuidSearch
 {
-    public sealed class GuidFinderWindow : EditorWindow
+    public sealed class GuidSearchWindow : EditorWindow
     {
         [Flags]
         public enum AssetTypes
@@ -49,7 +49,7 @@ namespace RoyTheunissen.GuidFinder
             }
         }
 
-        private static string EditorPrefPrefix => ProjectPath + "RoyTheunissen/GUID-Finder/";
+        private static string EditorPrefPrefix => ProjectPath + "RoyTheunissen/GUID-Search/";
         private static string EditorPrefSearchPath = EditorPrefPrefix + "SearchPath";
         private static string EditorPrefAssetsToSearchIn = EditorPrefPrefix + "AssetsToSearchIn";
 
@@ -83,19 +83,19 @@ namespace RoyTheunissen.GuidFinder
 
         private bool HasFilesToSearchIn => EditorPrefs.HasKey(EditorPrefAssetsToSearchIn);
 
-        [MenuItem("Window/Search/GUID Finder")]
+        [MenuItem("Window/Search/GUID Search")]
         public static void ShowExample()
         {
-            GuidFinderWindow window = GetWindow<GuidFinderWindow>();
+            GuidSearchWindow window = GetWindow<GuidSearchWindow>();
             
             if (lightModeIcon == null)
-                lightModeIcon = Resources.Load<Texture2D>("GuidFinderWindow Icon");
+                lightModeIcon = Resources.Load<Texture2D>("GuidSearchWindow Icon");
 
             if (darkModeIcon == null)
-                darkModeIcon = Resources.Load<Texture2D>("d_GuidFinderWindow Icon");
+                darkModeIcon = Resources.Load<Texture2D>("d_GuidSearchWindow Icon");
             
             window.titleContent = new GUIContent(
-                "GUID Finder", EditorGUIUtility.isProSkin ? darkModeIcon : lightModeIcon);
+                "GUID Search", EditorGUIUtility.isProSkin ? darkModeIcon : lightModeIcon);
         }
 
         public void CreateGUI()
