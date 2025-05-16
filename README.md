@@ -50,6 +50,12 @@ When doing important refactors, this tool is simple, fast, and thorough enough t
 
 It is guaranteed to find *every* possible reference.
 
+## Use Cases
+- You want to remove a script, but before you do you want to check where it's being used.
+- There's a problem with a shader, so you want to find all the materials that use that shader.
+- You're cleaning up a folder called `Archived` but you want to check that the Scriptable Object inside is genuinely not being used any more.
+- Etc.
+
 ## Getting Started
 
 - Open the GUID Finder window via `Window > Search > GUID Finder`
