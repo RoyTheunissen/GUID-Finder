@@ -22,7 +22,7 @@
     <img alt="tiktok" src="tiktok_dark.png" width="20" height="20" />
 </picture></a>
 
-_Sometimes you really need find all the places where an asset is being referenced, and Unity's own search solutions are too unreliable for this._
+_Sometimes you really need to find all the places where an asset is being referenced, and Unity's own search solutions are too unreliable for this._
 
 ## About the Project
 
