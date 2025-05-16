@@ -65,6 +65,9 @@ namespace RoyTheunissen.GuidFinder
         private ListView resultsListView;
 
         private List<Object> results = new();
+        
+        private static Texture2D lightModeIcon;
+        private static Texture2D darkModeIcon;
 
         private string SearchPath
         {
@@ -83,8 +86,16 @@ namespace RoyTheunissen.GuidFinder
         [MenuItem("Window/Search/GUID Finder")]
         public static void ShowExample()
         {
-            GuidFinderWindow wnd = GetWindow<GuidFinderWindow>();
-            wnd.titleContent = new GUIContent("GUID Finder");
+            GuidFinderWindow window = GetWindow<GuidFinderWindow>();
+            
+            if (lightModeIcon == null)
+                lightModeIcon = Resources.Load<Texture2D>("GuidFinderWindow Icon");
+
+            if (darkModeIcon == null)
+                darkModeIcon = Resources.Load<Texture2D>("d_GuidFinderWindow Icon");
+            
+            window.titleContent = new GUIContent(
+                "GUID Finder", EditorGUIUtility.isProSkin ? darkModeIcon : lightModeIcon);
         }
 
         public void CreateGUI()
