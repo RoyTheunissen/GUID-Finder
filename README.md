@@ -22,23 +22,63 @@
     <img alt="tiktok" src="tiktok_dark.png" width="20" height="20" />
 </picture></a>
 
-_🛑 <b><u>TO DO</u></b>_
+_Sometimes you really need find all the places where an asset is being referenced, and Unity's own search solutions are too unreliable for this._
 
 ## About the Project
 
-🛑 <b><u>TO DO</u></b>
+Let's say you removed a script from your game, and you want to ensure that it's also removed from scenes/prefabs. You might be inclined to use `Right Click -> Find References in Project`, which opens a Search window which will be thinking and processing for a very, very long time and then will then output _some_ results.
 
-[TO DO Video](https://www.youtube.com/watch?v=dQw4w9WgXcQ)    |    [TO DO Article](https://blog.roytheunissen.com)
+In practice I've found that it won't find usages in scenes unless those scenes happen to be open, and its track record is spotty with prefabs, too.
 
-![Example](Documentation~/Example.gif)
+In other words: if you're doing an important refactor and _must_ know all the places an asset's referenced, Unity Search will not suffice.
+
+But every asset has a GUID, so you could simply search the contents of assets for that GUID. In fact, you could do it in [Notepad++](https://notepad-plus-plus.org/) pretty easily:
+- Go to the asset in question in Unity
+- `Right Click -> Show in Explorer`
+- Go to the asset in question's `.meta` file
+- Copy the GUID
+- Press `CTRL+Shift+F` or go to to `Search > Find in Files`
+- Search for the specified GUID in files with pattern `*.unity *.prefab` in your project's `Assets` folder.
+- This will think only for a few seconds and then output a list of **every** reference to that asset.
+- You can then search for that asset by name in Unity
+
+This is a very robust approach, but of course you have to leave the editor for this, and there's a lot of manual labour involved. GUID Finder is essentially just a nice GUI for the above mentioned workflow:
+
+![image](https://github.com/user-attachments/assets/2c88b227-b5b3-41d4-9ce4-41343782d30d)
+
+When doing important refactors, this tool is simple, fast, and thorough enough to get the job done.
+
+It is guaranteed to find *every* possible reference.
 
 ## Getting Started
 
-- 🛑 <b><u>TO DO</u></b>
+- Open the GUID Finder window via `Window > Search > GUID Finder`
+  ![image](https://github.com/user-attachments/assets/2b3ed868-6076-4bc2-a296-47bf4a10d6b9)
+
+- Drag in an asset in the `Asset to find` field.
+- The GUID for the asset in question will appear.
+- Specify the types of files to search in.
+- Specify the folder to search in.
+- Press Search.
+- Observe how all the assets that reference the specified asset are listed, and you can click on them to open them.
+![image](https://github.com/user-attachments/assets/d9c78a48-d2a5-49dc-be3b-9c0082d2bf79)
+_Pictured: A script that is referenced inside a specific scene will be found even if that scene is not open, something that Unity's own Search solution does not seem to do._
+
+## Caveats
+- If you have a reference to an asset in a script, then remove that field from the script, the assets that had the reference will continue to have the reference until you modify and save the asset. You can see this happening in your version control software. It makes sense if you think about it: if you remove a field from a script you don't see Unity start a lengthy process of purging all the references of that field from its prefabs and scenes, polluting your working copy with a lot of changes. **This also means that if you have any such leftover references lying around, GUID Finder will find those as well**. GUID Finder will find **everything**, and it's up to you to filter out such false positives.
+- If you have a reference somewhere deep in a complicated prefab or scene, GUID Finder is not able to tell you _where_ inside that complicated prefab or scene. It's then up to you to go looking for the exact reference.
+
+## Feature Wishlist
+- Some (optional?) way to check if a reference is from a script, and then to check if that script does indeed still contain the specified field. If not, we could filter out search results for references that are not in use.
+- Some (optional?) way to locate the exact location of a reference inside of a prefab or script. This might be tricky, we may have to parse the asset a bit. There's also the question of how to present this in the GUI.
 
 ## Compatibility
 
-🛑 <b><u>TO DO</u></b>
+This system was developed for Unity 2022, it's recommended that you use it in Unity 2022 or upwards. It's been tested in Unity 6 as well and seems to work the same there.
+
+If you use an older version of Unity and are running into trouble, feel free to reach out and I'll see what I can do.
+
+The GUI was developed with UI Toolkit and the functionality is pretty basic, so this tool will likely work across a wide range of Unity versions.
 
 ## Installation
 
@@ -68,24 +108,21 @@ You can check out this repository as a submodule into your project's Assets fold
 ### OpenUPM
 The package is available on the [openupm registry](https://openupm.com). It's recommended to install it via [openupm-cli](https://github.com/openupm/openupm-cli).
 
-🛑 <b><u>TO DO</u></b>
 ```
-openupm add com.roytheunissen.assetpalette
+openupm add com.roytheunissen.guid-finder
 ```
 
 ### Manifest
 You can also install via git URL by adding this entry in your **manifest.json** (make sure to end with a comma if you're adding this at the top)
 
-🛑 <b><u>TO DO</u></b>
 ```
-"com.roytheunissen.assetpalette": "https://github.com/RoyTheunissen/Asset-Palette.git"
+"com.roytheunissen.guid-finder": "https://github.com/RoyTheunissen/GUID-Finder.git"
 ```
 
 ### Unity Package Manager
-🛑 <b><u>TO DO</u></b>
 From Window->Package Manager, click on the + sign and Add from git: 
 ```
-https://github.com/RoyTheunissen/Asset-Palette.git
+https://github.com/RoyTheunissen/GUID-Finder.git
 ```
 
 
