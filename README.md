@@ -42,7 +42,7 @@ But every asset has a GUID, so you could simply search the contents of assets fo
 - This will think only for a few seconds and then output a list of **every** reference to that asset.
 - You can then search for that asset by name in Unity
 
-This is a very robust approach, but of course you have to leave the editor for this, and there's a lot of manual labour involved. GUID Finder is essentially just a nice GUI for the above mentioned workflow:
+This is a very robust approach, but of course you have to leave the editor for this, and there's a lot of manual labour involved. GUID Search is essentially just a nice GUI for the above mentioned workflow:
 
 ![image](https://github.com/user-attachments/assets/2c88b227-b5b3-41d4-9ce4-41343782d30d)
 
@@ -58,7 +58,7 @@ It is guaranteed to find *every* possible reference.
 
 ## Getting Started
 
-- Open the GUID Finder window via `Window > Search > GUID Finder`
+- Open the GUID Search window via `Window > Search > GUID Search`
   ![image](https://github.com/user-attachments/assets/2b3ed868-6076-4bc2-a296-47bf4a10d6b9)
 
 - Drag in an asset in the `Asset to find` field.
@@ -71,8 +71,8 @@ It is guaranteed to find *every* possible reference.
 _Pictured: A script that is referenced inside a specific scene will be found even if that scene is not open, something that Unity's own Search solution does not seem to do._
 
 ## Caveats
-- If you have a reference to an asset in a script, then remove that field from the script, the assets that had the reference will continue to have the reference until you modify and save the asset. You can see this happening in your version control software. It makes sense if you think about it: if you remove a field from a script you don't see Unity start a lengthy process of purging all the references of that field from its prefabs and scenes, polluting your working copy with a lot of changes. **This also means that if you have any such leftover references lying around, GUID Finder will find those as well**. GUID Finder will find **everything**, and it's up to you to filter out such false positives.
-- If you have a reference somewhere deep in a complicated prefab or scene, GUID Finder is not able to tell you _where_ inside that complicated prefab or scene. It's then up to you to go looking for the exact reference.
+- If you have a reference to an asset in a script, then remove that field from the script, the assets that had the reference will continue to have the reference until you modify and save the asset. You can see this happening in your version control software. It makes sense if you think about it: if you remove a field from a script you don't see Unity start a lengthy process of purging all the references of that field from its prefabs and scenes, polluting your working copy with a lot of changes. **This also means that if you have any such leftover references lying around, GUID Search will find those as well**. GUID Search will find **everything**, and it's up to you to filter out such false positives.
+- If you have a reference somewhere deep in a complicated prefab or scene, GUID Search is not able to tell you _where_ inside that complicated prefab or scene. It's then up to you to go looking for the exact reference.
 
 ## Feature Wishlist
 - Some (optional?) way to check if a reference is from a script, and then to check if that script does indeed still contain the specified field. If not, we could filter out search results for references that are not in use.
@@ -115,20 +115,20 @@ You can check out this repository as a submodule into your project's Assets fold
 The package is available on the [openupm registry](https://openupm.com). It's recommended to install it via [openupm-cli](https://github.com/openupm/openupm-cli).
 
 ```
-openupm add com.roytheunissen.guid-finder
+openupm add com.roytheunissen.guid-search
 ```
 
 ### Manifest
 You can also install via git URL by adding this entry in your **manifest.json** (make sure to end with a comma if you're adding this at the top)
 
 ```
-"com.roytheunissen.guid-finder": "https://github.com/RoyTheunissen/GUID-Finder.git"
+"com.roytheunissen.guid-search": "https://github.com/RoyTheunissen/GUID-Search.git"
 ```
 
 ### Unity Package Manager
 From Window->Package Manager, click on the + sign and Add from git: 
 ```
-https://github.com/RoyTheunissen/GUID-Finder.git
+https://github.com/RoyTheunissen/GUID-Search.git
 ```
 
 
