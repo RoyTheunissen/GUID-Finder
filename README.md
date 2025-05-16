@@ -44,7 +44,7 @@ But every asset has a GUID, so you could simply search the contents of assets fo
 
 This is a very robust approach, but of course you have to leave the editor for this, and there's a lot of manual labour involved. GUID Search is essentially just a nice GUI for the above mentioned workflow:
 
-![image](https://github.com/user-attachments/assets/2c88b227-b5b3-41d4-9ce4-41343782d30d)
+![image](https://github.com/user-attachments/assets/cee9c342-799d-44ee-9630-39bc3a09675c)
 
 When doing important refactors, this tool is simple, fast, and thorough enough to get the job done.
 
@@ -59,7 +59,7 @@ It is guaranteed to find *every* possible reference.
 ## Getting Started
 
 - Open the GUID Search window via `Window > Search > GUID Search`
-  ![image](https://github.com/user-attachments/assets/2b3ed868-6076-4bc2-a296-47bf4a10d6b9)
+  ![image](https://github.com/user-attachments/assets/75b57620-619c-4223-831b-1fdc23954993)
 
 - Drag in an asset in the `Asset to find` field.
 - The GUID for the asset in question will appear.
@@ -67,7 +67,9 @@ It is guaranteed to find *every* possible reference.
 - Specify the folder to search in.
 - Press Search.
 - Observe how all the assets that reference the specified asset are listed, and you can click on them to open them.
-![image](https://github.com/user-attachments/assets/d9c78a48-d2a5-49dc-be3b-9c0082d2bf79)
+  
+![image](https://github.com/user-attachments/assets/4bc5fd00-04d2-47b0-8f11-8ffc837bdc55)
+
 _Pictured: A script that is referenced inside a specific scene will be found even if that scene is not open, something that Unity's own Search solution does not seem to do._
 
 ## Caveats
